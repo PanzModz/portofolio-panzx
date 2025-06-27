@@ -4,81 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Portfolio</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style(1).css"/>
 </head>
 <body>
   <!-- navbar -->
-  <script>
-  const toggle = document.getElementById('menu-toggle');
-  const navLinks = document.getElementById('nav-links');
-
-  toggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
-  
-  const form = document.getElementById("contactForm");
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = document.getElementById("message").value.trim();
-
-    if (!name || !email || !message) {
-      Swal.fire({
-        icon: 'warning',
-        title: 'Semua field harus diisi!',
-        text: 'Silakan lengkapi nama, email, dan pesan.',
-      });
-      return;
-    }
-
-    const token = "8173902644:AAHO_nUPw_Z0ukfzQc2U0VhufeH7IjGbWiw"; // Ganti dengan token bot kamu
-    const chat_id = "7635071107"; // Ganti dengan chat ID admin/owner
-
-    const text = `
-📩 *Pesan Baru dari Website*
-👤 Nama: ${name}
-📧 Email: ${email}
-📝 Pesan: ${message}
-    `;
-
-    fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        chat_id: chat_id,
-        text: text,
-        parse_mode: "Markdown",
-      }),
-    })
-    .then((res) => {
-      if (res.ok) {
-        Swal.fire({
-          icon: 'success',
-          title: 'Pesan Terkirim!',
-          text: 'Terima kasih, pesan kamu sudah dikirim.',
-        });
-        form.reset();
-      } else {
-        return res.json().then(data => {
-          throw new Error(data.description || "Gagal mengirim pesan.");
-        });
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      Swal.fire({
-        icon: 'error',
-        title: 'Gagal Mengirim!',
-        text: 'Terjadi kesalahan saat mengirim pesan. Coba lagi nanti.',
-      });
-    });
-  });
-</script>
 <nav class="navbar">
   <div class="logo">
     <img src="https://l.top4top.io/p_3465y9opy1.jpg" alt="Logo Panzx">
@@ -171,15 +100,19 @@
   </div>
   </section>
   <!-- contac-me -->
-    <form class="contac" id="contactForm">
-    <h3 class="teks">Contact Me</h3>
-    <input type="text" id="name" placeholder="Nama Anda" required>
-    <input type="email" id="email" placeholder="Email Anda" required>
-    <textarea id="message" placeholder="Pesan Anda" rows="4" required></textarea>
-    <button type="submit">Kirim Pesan</button>
-    <div class="success" id="successMsg"></div>
-    <div class="error" id="errorMsg"></div>
-  </form>
+  <div class="contatc section" id="home">
+    <h3>Contact Me</h3>
+    <form id="contact-form">
+      <input type="text" id="name" name="name" placeholder="Your Name" required />
+      <input type="email" id="email" name="email" placeholder="Your Email" required />
+      <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+      <input type="file" id="image" name="image" accept="image/*" />
+      <button type="submit">Send Message</button>
+      <p class="success" id="success-msg"></p>
+      <p class="error" id="error-msg"></p>
+    </form>
+    <p class="final-message" id="final-msg"></p>
+  </div>
   <!-- footer -->
   <footer class="footer">
   <div class="footer-container">
