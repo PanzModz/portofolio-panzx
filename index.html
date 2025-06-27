@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <!-- navbar -->
+  <script>
+  const toggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  toggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+  
+  const form = document.getElementById("contactForm");
+    const successMsg = document.getElementById("successMsg");
+    const errorMsg = document.getElementById("errorMsg");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      const token = "7608218755:AAGxZXhE1K79PzQ9VJQFy6AdJ9QhRIebirE"; // Ganti dengan token bot kamu
+      const chat_id = "7635071107"; // Ganti dengan chat ID kamu
+
+      const text = `
+📩 *Pesan Baru dari Website*
+👤 Nama: ${name}
+📧 Email: ${email}
+📝 Pesan: ${message}
+      `;
+
+      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          chat_id: chat_id,
+          text: text,
+          parse_mode: "Markdown"
+        })
+      })
+      .then(res => {
+        if (res.ok) {
+          successMsg.textContent = "✅ Pesan berhasil dikirim!";
+          errorMsg.textContent = "";
+          form.reset();
+        } else {
+          throw new Error("Gagal mengirim pesan.");
+        }
+      })
+      .catch(err => {
+        errorMsg.textContent = "❌ Terjadi kesalahan saat mengirim.";
+        successMsg.textContent = "";
+      });
+    });
+</script>
+<nav class="navbar">
+  <div class="logo">
+    <img src="https://l.top4top.io/p_3465y9opy1.jpg" alt="Logo Panzx">
+  </div>
+  <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#nav-links">Home</a></li>
+    <li><a href="#about">About Me</a></li>
+    <li><a href="#skills">My Skills</a></li>
+    <li><a href="#projetc">My Projetc</a></li>
+    <li><a href="#contatc">Contatc Me</a></li>
+  </ul>
+</nav>
+  <!-- about-me -->
+  <header class="about-me" id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <p class="about-text">I am Muhammad Irfan Irsyad, you can call me Irfan, I am a beginner web developer, who wants to become a Fullstack Web Developer, and I am currently learning HTML, CSS, Javascript, Node.js</p>
+    </div>
+  </header>
+  <!-- skills -->
+<section id="skills">
+<div class="skill">
+  <label>HTML</label>
+  <div class="bar">
+    <div class="fill" style="--fill-width: 70%;" data-fill="70%">
+      <span class="percent">70%</span>
+    </div>
+  </div>
+</div>
+<div class="skill">
+  <label>CSS</label>
+  <div class="bar">
+    <div class="fill" style="--fill-width: 70%;" data-fill="70%">
+      <span class="percent">70%</span>
+    </div>
+  </div>
+</div>
+<div class="skill">
+  <label>JavaScript</label>
+  <div class="bar">
+    <div class="fill" style="--fill-width: 65%;" data-fill="65%">
+      <span class="percent">65%</span>
+    </div>
+  </div>
+</div>
+<div class="skill">
+  <label>Botz WhatsApp</label>
+  <div class="bar">
+    <div class="fill" style="--fill-width: 95%;" data-fill="95%">
+      <span class="percent">95%</span>
+    </div>
+  </div>
+</div>
+</section>
+  <!-- project -->
+  <section class="project">
+  <h2 class="my-projet">My Projects</h2>
+
+  <div class="project-container">
+    <!-- Project 1 -->
+    <div class="project-card">
+      <img src="https://b.top4top.io/p_346525qc51.jpg" alt="Portfolio">
+      <div class="card-content">
+        <h3>Website Portfolio</h3>
+        <p>Website pribadi dengan tampilan interaktif dan animasi Mulus.</p>
+        <a href="#">Lihat Project</a>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card">
+      <img src="https://l.top4top.io/p_3465bduxx1.jpg" alt="Bot WhatsApp">
+      <div class="card-content">
+        <h3>Bot WhatsApp</h3>
+        <p>Bot untuk bisnis layanan digital dengan autoorder dan QRIS.</p>
+        <a href="https://wa.me/6285183978270?text=.layanan">Demo Bot</a>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card">
+      <img src="https://k.top4top.io/p_34657wt4o1.jpg" alt="QRIS System">
+      <div class="card-content">
+        <h3>QRIS Payment</h3>
+        <p>Sistem otomatisasi pembayaran digital via QRIS dan validasi API.</p>
+        <a href="https://payment-panzx-psi.vercel.app">Lihat Sistem</a>
+      </div>
+    </div>
+  </div>
+  </section>
+  <!-- contac-me -->
+    <form class="contac" id="contactForm">
+    <h3 class="teks">Contact Me</h3>
+    <input type="text" id="name" placeholder="Nama Anda" required>
+    <input type="email" id="email" placeholder="Email Anda" required>
+    <textarea id="message" placeholder="Pesan Anda" rows="4" required></textarea>
+    <button type="submit">Kirim Pesan</button>
+    <div class="success" id="successMsg"></div>
+    <div class="error" id="errorMsg"></div>
+  </form>
+  <!-- footer -->
+  <footer class="footer">
+  <div class="footer-container">
+    <a href="https://wa.me/6287722192208" target="_blank" class="footer-link whatsapp">WhatsApp</a>
+    <a href="https://t.me/panzxtech" target="_blank" class="footer-link telegram">Telegram</a>
+    <a href="https://chat.whatsapp.com/yourGroupLink" target="_blank" class="footer-link group">Saluran WhatsApp</a>
+    <span class="license">© 2025 Panzx. All Rights Reserved. License MIT.</span>
+  </div>
+</footer>
+ <!-- End -->
+ <script src="script.js"></script>
+</body>
+</html>
