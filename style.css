@@ -6,33 +6,18 @@
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-image: url('https://files.catbox.moe/9ovxfn.jpg');
+  background-image: url('https://f.top4top.io/p_3465dzun61.jpg');
   background-size: cover;         /* Agar gambar menutupi seluruh elemen */
   background-position: center;    /* Pusatkan gambar */
   background-repeat: no-repeat;   /* Jangan ulangi gambar */
 }
 
-/* Navbar Style */
-.navbar {
+canvas {
   background: rgba(0, 0, 0, 0.3); /* transparan */
 backdrop-filter: blur(10px);    /* blur */
 -webkit-backdrop-filter: blur(10px); /* untuk dukungan Safari */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 30px;
-  backdrop-filter: blur(10px);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 999;
-  animation: slideDown 1s ease-out forwards;
-  transform: translateY(-100%);
-  box-shadow: 0 0 15px #00f2ff;
-  border-bottom: 2px solid #00f2ff;
 }
-
-/* Logo */
+/* Navbar Style */
 .logo img {
   width: 50px;
   height: 50px;
@@ -42,83 +27,90 @@ backdrop-filter: blur(10px);    /* blur */
   transform: translateY(30px);
 }
 
-/* Toggle */
+body {
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+.navbar {
+  background: rgba(0, 0, 0, 0.3); /* transparan */
+backdrop-filter: blur(10px);    /* blur */
+-webkit-backdrop-filter: blur(10px); /* untuk dukungan Safari */
+  color: #fff;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;  /* Buat navbar nempel di atas */
+  top: 0;           /* Tempel di atas layar */
+  left: 0;
+  width: 100%;
+  height: 70px;
+  z-index: 1000;    /* Biar di atas konten lain */
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
 .menu-toggle {
-  font-size: 28px;
-  color: #00f2ff;
-  display: none;
+  font-size: 2rem;
   cursor: pointer;
 }
 
-/* Nav Links */
 .nav-links {
-  display: flex;
-  gap: 25px;
+  background: rgba(0, 0, 0, 0.3); /* transparan */
+backdrop-filter: blur(10px);    /* blur */
+-webkit-backdrop-filter: blur(10px); /* untuk dukungan Safari */
+  position: fixed;
+  top: 75px;
+  right: -250px;
+  width: 150px;
+  height: 250px;
+  border-radius: 10px;
+  /* background: #222; */
   list-style: none;
-  transition: max-height 0.5s ease;
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: right 0.3s ease;
+  z-index: 999;
 }
 
 .nav-links li a {
   text-decoration: none;
-  color: #00f2ff;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-.nav-links li a:hover {
   color: #fff;
+  font-size: 1.2rem;
 }
 
-/* Animasi */
-@keyframes slideDown {
-  to {
-    transform: translateY(0);
-  }
+.nav-links.active {
+  right: 0;
 }
 
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    max-height: 0;
-    overflow: hidden;
-  }
-
-  .nav-links.active {
-    max-height: 500px;
-    padding: 15px 0;
-  }
-
-  .nav-links li {
-    padding: 10px 0;
-    text-align: center;
-  }
+.close-btn {
+  font-size: 2rem;
+  text-align: right;
+  color: #fff;
+  cursor: pointer;
+  align-self: flex-end;
 }
 /* About Me */
 .about-me {
-  background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
+  background: rgba(0, 0, 0, 0.3); /* transparan */
+backdrop-filter: blur(10px);    /* blur */
+-webkit-backdrop-filter: blur(10px); /* untuk dukungan Safari */
   color: #ffffff;
-  padding: 80px 20px;
-  box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2); /* Shadow neon ringan */
+  padding: 60px 20px;
+  box-shadow: 0  10px 30px rgba(0, 255, 255, 0.2); */ /* Shadow neon ringan */
   display: flex;
+  height: 300px;
+  position-anchor: fixed;
   justify-content: center;
   align-items: center;
+  border-radius: 15px;
 }
 
 /* Container dengan animasi */
@@ -144,8 +136,10 @@ backdrop-filter: blur(10px);    /* blur */
 .about-text {
   font-size: 1.1rem;
   line-height: 1.7;
-  color: #e0e0e0;
-  text-shadow: 0 0 2px rgba(0, 255, 255, 0.2);
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff;
+  font-weight: bold;
+  /* text-shadow: 0 0 2px rgba(0, 255, 255, 0.2); */
 }
 
 /* Animasi masuk dari bawah */
@@ -269,6 +263,7 @@ backdrop-filter: blur(10px);    /* blur */
 
 .skill {
   margin-bottom: 25px;
+  padding: 0 20px;
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 1s ease forwards;
@@ -314,139 +309,6 @@ backdrop-filter: blur(10px);    /* blur */
   text-shadow: 0 0 3px #00f7ff;
 }
   
-/* Styling untuk About Me */
-.about-me {
-  background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
-  color: #ffffff;
-  padding: 80px 20px;
-  box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2); /* Shadow neon ringan */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Container dengan animasi */
-.about-me .container {
-  max-width: 800px;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeInUp 1.2s ease-out forwards;
-}
-
-/* Judul */
-.section-title {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #00ffff;
-  text-shadow: 0 0 5px #00ffff;
-  font-weight: bold;
-}
-
-/* Teks isi */
-.about-text {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: #e0e0e0;
-  text-shadow: 0 0 2px rgba(0, 255, 255, 0.2);
-}
-
-/* Animasi masuk dari bawah */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsif untuk layar kecil */
-@media (max-width: 600px) {
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .about-text {
-    font-size: 1rem;
-  }
-}
-}
-
-/* Animasi fadeIn dari bawah */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Styling untuk About Me */
-.about-me {
-background: rgba(0, 0, 0, 0.3); /* transparan */
-backdrop-filter: blur(10px);    /* blur */
--webkit-backdrop-filter: blur(10px); /* untuk dukungan Safari */
-  padding: 80px 20px;
-  box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2); /* Shadow neon ringan */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Container dengan animasi */
-.about-me .container {
-  max-width: 800px;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeInUp 1.2s ease-out forwards;
-}
-
-/* Judul */
-.section-title {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #00ffff;
-  text-shadow: 0 0 5px #00ffff;
-  font-weight: bold;
-}
-
-/* Teks isi */
-.about-text {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: #e0e0e0;
-  text-shadow: 0 0 2px rgba(0, 255, 255, 0.2);
-}
-
-/* Animasi masuk dari bawah */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsif untuk layar kecil */
-@media (max-width: 600px) {
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .about-text {
-    font-size: 1rem;
-  }
-}
 /* My Projet */
     .my-projet {
       text-align: center;
@@ -646,8 +508,11 @@ h3 {
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   color: white;
+  position: horizontal;
   padding: 20px 0;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: 'Arial', sans-serif;
   overflow: hidden;
 }
@@ -655,8 +520,8 @@ h3 {
 .footer-container {
   display: flex;
   flex-direction: column;
-  gap: 12px;
   align-items: center;
+  gap: 12px;
   opacity: 0;
   transform: translateY(50px);
   animation: fadeInUp 1s ease forwards;
@@ -664,10 +529,13 @@ h3 {
 }
 
 .footer-link {
+  display: flex;
+  position: horizontal;
   text-decoration: none;
   color: #00f2ff;
   font-weight: bold;
   padding: 8px 16px;
+  text-align: center;
   border: 2px solid #00f2ff;
   border-radius: 30px;
   transition: all 0.3s ease;
@@ -689,13 +557,16 @@ h3 {
 }
 
 .license {
+  text-align: center;
   font-size: 14px;
   color: #888;
-  margin-top: 10px;
+  margin: 10px;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s ease forwards;
   animation-delay: 1s;
+  max-width: 90%; /* Agar tidak melebar melebihi layar */
+  word-wrap: break-word; /* Pecah kata jika panjang */
 }
 
 /* Animasi Masuk */

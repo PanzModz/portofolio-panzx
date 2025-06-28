@@ -8,20 +8,23 @@
 </head>
 <body>
   <!-- navbar -->
-<nav class="navbar">
-  <div class="logo">
+   <canvas id="canvs"></canvas>
+    <nav class="navbar">
+    <div class="logo">
     <img src="https://l.top4top.io/p_3465y9opy1.jpg" alt="Logo Panzx">
-  </div>
-  <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    </div>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+  </nav>
+
   <ul class="nav-links" id="nav-links">
-    <li><a href="#nav-links">Home</a></li>
-    <li><a href="#about">About Me</a></li>
-    <li><a href="#skills">My Skills</a></li>
-    <li><a href="#projetc">My Projetc</a></li>
-    <li><a href="#contatc">Contatc Me</a></li>
+    <li><span class="close-btn" id="close-btn">&times;</span></li> <!-- Tombol kembali -->
+    <li><a href="#">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projetc">Project</a></li>
+    <li><a href="#kontak">Contatc</a></li>
   </ul>
-</nav>
-  <!-- about-me -->
+    <!-- about-me -->
   <header class="about-me" id="about">
     <div class="container">
       <h2 class="section-title">About Me</h2>
@@ -64,7 +67,7 @@
 </div>
 </section>
   <!-- project -->
-  <section class="project">
+  <section class="project" id="projetc">
   <h2 class="my-projet">My Projects</h2>
 
   <div class="project-container">
@@ -100,7 +103,7 @@
   </div>
   </section>
   <!-- contac-me -->
-  <div class="contatc section" id="home">
+  <div class="contatc section" id="kontak">
     <h3>Contact Me</h3>
     <form id="contact-form">
       <input type="text" id="name" name="name" placeholder="Your Name" required />
@@ -119,7 +122,7 @@
     <a href="https://wa.me/6287722192208" target="_blank" class="footer-link whatsapp">WhatsApp</a>
     <a href="https://t.me/panzxtech" target="_blank" class="footer-link telegram">Telegram</a>
     <a href="https://chat.whatsapp.com/yourGroupLink" target="_blank" class="footer-link group">Saluran WhatsApp</a>
-    <span class="license">© 2025 Panzx. All Rights Reserved. License MIT.</span>
+     <span class="license">© 2025 Panzx. All Rights Reserved. License MIT.</span>
   </div>
 </footer>
  <!-- End -->

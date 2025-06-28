@@ -1,11 +1,23 @@
 // navbar //
 const toggle = document.getElementById('menu-toggle');
 const navLinks = document.getElementById('nav-links');
+const closeBtn = document.getElementById('close-btn');
+const navItems = navLinks.querySelectorAll('a'); // semua link <a>
 
 toggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
+  navLinks.classList.add('active');
 });
 
+closeBtn.addEventListener('click', () => {
+  navLinks.classList.remove('active');
+});
+
+// Tambahkan event listener ke setiap <a>
+navItems.forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+  });
+});
 // Skill
   document.addEventListener("DOMContentLoaded", () => {
     const fills = document.querySelectorAll('.fill');
@@ -25,16 +37,71 @@ toggle.addEventListener('click', () => {
     });
   });
   
-    function enterApp() {
-      document.getElementById('dashboard').style.display = 'none';
-      document.getElementById('navbar').classList.add('active');
-      showSection('home');
+  const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    const points = [];
+    const POINTS_COUNT = 100; // Jumlah titik
+    const MAX_DISTANCE = 120; // Jarak maksimal antar titik
+
+    for (let i = 0; i < POINTS_COUNT; i++) {
+      points.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.4, // Kecepatan horizontal
+        vy: (Math.random() - 0.5) * 0.4, // Kecepatan vertikal
+      });
     }
 
-    function showSection(id) {
-      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+
+      for (let i = 0; i < POINTS_COUNT; i++) {
+        const p = points[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Pantul jika mengenai pinggir layar
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = '#ffffff'; // Titik putih
+        ctx.fill();
+      }
+
+      for (let i = 0; i < POINTS_COUNT; i++) {
+        for (let j = i + 1; j < POINTS_COUNT; j++) {
+          const p1 = points[i];
+          const p2 = points[j];
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < MAX_DISTANCE) {
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(255, 255, 255, ${1 - dist / MAX_DISTANCE})`; // Garis putih
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(animate);
     }
+
+    animate();
 
     const form = document.getElementById("contact-form");
     const successMsg = document.getElementById("success-msg");
